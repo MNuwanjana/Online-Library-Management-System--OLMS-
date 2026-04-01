@@ -1,0 +1,4 @@
+-- --------------------------------------------------------
+-- OLMS Master Database Structure
+-- Import this file into phpMyAdmin to set up your local database.
+-- --------------------------------------------------------
