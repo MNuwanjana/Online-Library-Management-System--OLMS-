@@ -66,6 +66,11 @@ olms-web-app/
 │
 ├── database/
 │   └── olms.sql            ← (The single MySQL Database file)
+│   └── seeds/              ← (The dummy data databases)
+│       ├── 01_users_seed.sql       
+│       ├── 02_books_seed.sql        
+│       ├── 03_transactions_seed.sql      
+│       └── 04_reviews_seed.sql        
 │
 ├── index.php               ← (Main App Router)
 └── README.md
