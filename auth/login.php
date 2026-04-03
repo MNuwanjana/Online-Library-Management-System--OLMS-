@@ -10,10 +10,11 @@ $success_message = "";
 
 if (isset($_POST['login'])) {
 
-    $email    = mysqli_real_escape_string($conn, $_POST['email']);
+    $input    = mysqli_real_escape_string($conn, $_POST['input']);   // Can be email or username
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE email = '$email'";
+    // Login with either username OR email
+    $query = "SELECT * FROM users WHERE email = '$input' OR username = '$input'";
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) == 1) {
@@ -22,28 +23,21 @@ if (isset($_POST['login'])) {
 
         if (password_verify($password, $user['password'])) {
 
-            // Set session
             $_SESSION['user_id']   = $user['id'];
             $_SESSION['username']  = $user['username'];
             $_SESSION['role']      = $user['role'];
 
-            // Success message with username
             $success_message = "✅ Login successful! Welcome, " . htmlspecialchars($user['username']) . "!";
 
-            // Optional: Auto redirect after 2 seconds
-            echo "<meta http-equiv='refresh' content='2;url=";
-            if ($user['role'] == 'admin') {
-                echo "../admin/admin_index.php";
-            } else {
-                echo "../core/dashboard.php";
-            }
-            echo "'>";
+            // Auto redirect after 2 seconds
+            $redirect_url = ($user['role'] == 'admin') ? "../admin/admin_index.php" : "../core/dashboard.php";
+            echo "<meta http-equiv='refresh' content='2;url=$redirect_url'>";
 
         } else {
             $error = "Incorrect password!";
         }
     } else {
-        $error = "No account found with this email!";
+        $error = "No account found with this username or email!";
     }
 }
 ?>
@@ -65,7 +59,7 @@ if (isset($_POST['login'])) {
 
             <form method="POST">
                 <div class="mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    <input type="text" name="input" class="form-control" placeholder="Username or Email" required>
                 </div>
                 <div class="mb-3">
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
