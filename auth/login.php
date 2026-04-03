@@ -30,7 +30,7 @@ if (isset($_POST['login'])) {
             $success_message = "✅ Login successful! Welcome, " . htmlspecialchars($user['username']) . "!";
 
             // Auto redirect after 2 seconds
-            $redirect_url = ($user['role'] == 'admin') ? "../admin/admin_index.php" : "../index.php";
+            $redirect_url = ($user['role'] == 'admin') ? "../admin/admin_index.php" : "../core/dashboard.php";
             echo "<meta http-equiv='refresh' content='2;url=$redirect_url'>";
 
         } else {
