@@ -49,17 +49,14 @@ if (isset($_GET['search'])) {
 
 <div class="container mt-4">
 
-    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
 
-        <!-- Centered Title -->
         <h3 class="text-center flex-grow-1 fw-bold" style="color: #4e73df;">
             Manage Books
         </h3>
 
     </div>
 
-    <!-- Add Book Button -->
     <a href="add_books.php" class="btn btn-success btn-hover mb-3">
         Add Book
     </a>
@@ -70,13 +67,12 @@ if (isset($_GET['search'])) {
             🔙 Back to Full Book List
         </a>
     </div>
-<?php endif; ?>
+    <?php endif; ?>
 
-    <!-- Search Bar -->
     <form method="GET" class="mb-3">
         <div class="input-group shadow-sm">
             <input type="text" name="search" class="form-control" placeholder="🔍 Search by title or author..."
-                value="<?= $search ?>">
+                value="<?= htmlspecialchars($search) ?>">
             <button class="btn btn-primary">Search</button>
         </div>
     </form>
@@ -87,7 +83,6 @@ if (isset($_GET['search'])) {
         </div>
     <?php else: ?>
 
-    <!-- Table -->
     <div class="card shadow p-3">
         <div class="table-responsive">
 
@@ -114,12 +109,12 @@ if (isset($_GET['search'])) {
                             <td>
                                 <?php
                                 $cover = $row['cover_image'];
-                                // If it's a URL
+                                // If it's a valid web URL, use it directly
                                 if (filter_var($cover, FILTER_VALIDATE_URL)) {
-                                 $image_path = $cover;
+                                    $image_path = $cover;
                                 } else {
-                                // If it's already stored like assets/images/file.jpg → use directly
-                                $image_path = "../" . $cover;
+                                    // FIXED: If it's a local filename, point to the correct assets folder
+                                    $image_path = "../assets/images/" . $cover;
                                 }
                                 ?>
                                 <img src="<?= $image_path ?>" 
@@ -129,19 +124,17 @@ if (isset($_GET['search'])) {
                                     onerror="this.onerror=null; this.src='../assets/images/default-cover.jpg';">
                             </td>
 
-                            <td><?= $row['title'] ?></td>
-                            <td><?= $row['author'] ?></td>
-                            <td><?= $row['category'] ?></td>
+                            <td><?= htmlspecialchars($row['title']) ?></td>
+                            <td><?= htmlspecialchars($row['author']) ?></td>
+                            <td><?= htmlspecialchars($row['category']) ?></td>
                             <td><?= $row['total_qty'] ?></td>
                             <td><?= $row['available_qty'] ?></td>
 
                             <td>
-                                <!-- EDIT -->
                                 <a href="edit_book.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm btn-hover">
                                     ✏️ Edit
                                 </a>
 
-                                <!-- DELETE -->
                                 <form method="POST" style="display:inline;">
                                     <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
                                     <button class="btn btn-danger btn-sm btn-hover"

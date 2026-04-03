@@ -81,10 +81,18 @@ $cat_result = $conn->query($cat_sql);
                     <div class="card h-100 shadow-sm border-0 hover-card">
                         <!-- Book Cover -->
                         <div class="book-cover-wrapper">
-                            <img src="../assets/images/<?php echo htmlspecialchars($book['cover_image']); ?>" 
+                            <?php
+                            $cover = $book['cover_image'];
+                            if (filter_var($cover, FILTER_VALIDATE_URL)) {
+                                $image_path = $cover;
+                            } else {
+                                $image_path = "../assets/images/" . $cover;
+                            }
+                            ?>
+                            <img src="<?php echo $image_path; ?>" 
                                  class="card-img-top book-cover"
                                  alt="<?php echo htmlspecialchars($book['title']); ?>"
-                                 onerror="this.src='../assets/images/default-cover.jpg'">
+                                 onerror="this.onerror=null; this.src='../assets/images/default-cover.jpg'">
                             <?php if ($book['available_qty'] > 0): ?>
                                 <span class="badge-available">Available</span>
                             <?php else: ?>

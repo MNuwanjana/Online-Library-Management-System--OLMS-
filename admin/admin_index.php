@@ -17,7 +17,7 @@
     <div class="p-5 rounded shadow text-white" 
          style="background: linear-gradient(135deg, #4e73df, #224abe);">
 
-        <h1 class="fw-bold">📊 Admin Dashboard</h1>
+        <h1 class="fw-bold">Admin Dashboard</h1>
 
         <p class="mt-2">
             Manage your library system efficiently. Add, update, and monitor books easily.

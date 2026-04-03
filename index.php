@@ -196,9 +196,18 @@ while ($row = mysqli_fetch_assoc($latest_books_query)) {
                 ?>
                 <div class="card h-100 shadow-sm border-0 hover-card book-card-custom">
                     <div class="book-cover-wrapper">
-                        <img src="<?php echo $base_url; ?>assets/images/<?php echo rawurlencode($book['cover_image']); ?>"
+                        <?php
+                        $cover = $book['cover_image'];
+                        if (filter_var($cover, FILTER_VALIDATE_URL)) {
+                            $image_path = $cover;
+                        } else {
+                            $image_path = $base_url . "assets/images/" . rawurlencode($cover);
+                        }
+                        ?>
+                        <img src="<?php echo $image_path; ?>"
                             class="card-img-top book-cover-custom"
-                            alt="<?php echo htmlspecialchars($book['title']); ?> Cover">
+                            alt="<?php echo htmlspecialchars($book['title']); ?> Cover"
+                            onerror="this.onerror=null; this.src='<?php echo $base_url; ?>assets/images/default-cover.jpg';">
 
                         <?php if ($book['available_qty'] > 0): ?>
                             <span class="badge-available">Available</span>

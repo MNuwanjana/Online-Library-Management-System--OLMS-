@@ -29,7 +29,7 @@ $returned_result = $conn->query($returned_sql);
 ?>
 
 <div class="container my-4">
-    <h1 class="display-4 fw-bold mb-4">📚 My Dashboard</h1>
+    <h1 class="display-4 fw-bold mb-4">Borrow & Returns</h1>
 
     <!-- Success/Error Messages -->
     <?php if (isset($_SESSION['success'])): ?>

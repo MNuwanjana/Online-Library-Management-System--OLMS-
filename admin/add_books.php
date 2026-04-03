@@ -4,10 +4,10 @@ include('../includes/header.php');
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $title = $_POST['title'];
-    $author = $_POST['author'];
-    $category = $_POST['category'];
-    $total_qty = $_POST['total_qty'];
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $author = mysqli_real_escape_string($conn, $_POST['author']);
+    $category = mysqli_real_escape_string($conn, $_POST['category']);
+    $total_qty = (int)$_POST['total_qty'];
 
     // Set available quantity = total initially
     $available_qty = $total_qty;
@@ -17,18 +17,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // 🔥 1. FILE UPLOAD (PRIORITY)
     if(isset($_FILES['cover_file']) && $_FILES['cover_file']['name'] != ""){
 
-        $file_name = time() . "_" . $_FILES['cover_file']['name']; // unique name
+        // Clean the filename to remove spaces
+        $clean_name = preg_replace("/\s+/", "_", basename($_FILES['cover_file']['name']));
+        $file_name = time() . "_" . $clean_name; 
+        
         $tmp_name = $_FILES['cover_file']['tmp_name'];
         $target_dir = "../assets/images/";
         $target_file = $target_dir . $file_name;
 
         if(move_uploaded_file($tmp_name, $target_file)){
-            $cover_image_path = "assets/images/" . $file_name;
+            // FIXED: Just save the filename, not the folder path!
+            $cover_image_path = $file_name;
         }
     } 
     // 🔥 2. URL (fallback)
     else if(!empty($_POST['cover_image'])){
-        $cover_image_path = $_POST['cover_image'];
+        $cover_image_path = mysqli_real_escape_string($conn, $_POST['cover_image']);
     }
 
     // Insert into database
@@ -36,7 +40,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             VALUES ('$title', '$author', '$category', '$cover_image_path', $total_qty, $available_qty)";
 
     if($conn->query($sql)){
-        // Redirect to manage page so you can see it immediately
         header("Location: manage_books.php");
         exit();
     } else {

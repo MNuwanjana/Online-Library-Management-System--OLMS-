@@ -51,10 +51,18 @@ $review_count = $avg_data['review_count'] ?? 0;
         <div class="row g-0">
             <!-- Left: Book Cover -->
             <div class="col-md-4 bg-light text-center p-4">
-                <img src="../assets/images/<?php echo htmlspecialchars($book['cover_image']); ?>" 
+                <?php
+                $cover = $book['cover_image'];
+                if (filter_var($cover, FILTER_VALIDATE_URL)) {
+                    $image_path = $cover;
+                } else {
+                    $image_path = "../assets/images/" . $cover;
+                }
+                ?>
+                <img src="<?php echo $image_path; ?>" 
                      class="img-fluid rounded shadow"
                      alt="<?php echo htmlspecialchars($book['title']); ?>"
-                     onerror="this.src='../assets/images/default-cover.jpg'"
+                     onerror="this.onerror=null; this.src='../assets/images/default-cover.jpg'"
                      style="max-height: 450px; width: auto; object-fit: contain;">
             </div>
             
