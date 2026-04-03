@@ -5,9 +5,12 @@
 -- =====================================================================================
 
 -- 01_users_seed.sql
--- DO NOT change olms.sql, only run this seed file
+-- ONLY this file is used. Do NOT change olms.sql
 
-INSERT INTO users (username, email, password, role) 
-VALUES 
+TRUNCATE TABLE users;
+
+INSERT INTO users (username, email, password, role) VALUES
 ('Admin User', 'admin@olms.com', '$2y$10$wH8QxYyQJx8l7GzK6q5zKe6z0w8Qwz3v9l8Jp7kGqZ6m9YFQZr1Hy', 'admin'),
-('Test Student', 'student@olms.com', '$2y$10$wH8QxYyQJx8l7GzK6q5zKe6z0w8Qwz3v9l8Jp7kGqZ6m9YFQZr1Hy', 'student');
+('Test Student 1', 'student1@olms.com', '$2y$10$wH8QxYyQJx8l7GzK6q5zKe6z0w8Qwz3v9l8Jp7kGqZ6m9YFQZr1Hy', 'member'),
+('Test Student 2', 'student2@olms.com', '$2y$10$wH8QxYyQJx8l7GzK6q5zKe6z0w8Qwz3v9l8Jp7kGqZ6m9YFQZr1Hy', 'member'),
+('Test Student 3', 'student3@olms.com', '$2y$10$wH8QxYyQJx8l7GzK6q5zKe6z0w8Qwz3v9l8Jp7kGqZ6m9YFQZr1Hy', 'member');
