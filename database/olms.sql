@@ -54,7 +54,11 @@ INSERT INTO `books` (title, author, category, cover_image, total_qty, available_
 ('1984', 'George Orwell', 'Dystopian Fiction', '1984.jpg', 4, 3), 
 ('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic Fiction', 'The Great Gatsby.jpg', 4, 4), 
 ('A Brief History of Time', 'Stephen Hawking', 'Science', 'A Brief History of Time.jpg', 3, 2), 
-('The Diary of a Young Girl', 'Anne Frank', 'Biography', 'The Diary of a Young Girl.jpg', 3, 2);
+('The Diary of a Young Girl', 'Anne Frank', 'Biography', 'The Diary of a Young Girl.jpg', 3, 2),
+('Harry Potter & The Sorcerer''s Stone', 'J.K. Rowling', 'Fantasy', 'Harry Potter.jpeg', 5, 5),
+('The Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', 'Fantasy', 'https://m.media-amazon.com/images/I/71lKy8RoFUL._AC_UF1000,1000_QL80_.jpg', 4, 4),
+('Percy Jackson & The Olympians: The Lightning Thief', 'Rick Riordan', 'Fantasy', 'https://books.disney.com/content/uploads/2014/06/0786856297.jpg', 4, 4),
+('The Hunger Games', 'Suzanne Collins', 'Action', 'https://m.media-amazon.com/images/I/61I24wOsn8L._SY466_.jpg', 4, 4);
 
 
 -- 3. Create the `transactions` table

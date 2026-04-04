@@ -87,7 +87,7 @@ if (isset($_GET['search'])) {
                     title: 'Success!', 
                     text: '<?= htmlspecialchars($_SESSION['success']) ?>', 
                     icon: 'success', 
-                    confirmButtonColor: '#82a841' //  Sage Green
+                    confirmButtonColor: '#82a841' // Sage Green
                 });
             });
         </script>
@@ -135,8 +135,8 @@ if (isset($_GET['search'])) {
                     <tr>
                         <th class="rounded-start">ID</th>
                         <th>Cover</th>
-                        <th>Title</th>
-                        <th>Author</th>
+                        <th style="width: 25%;">Title</th>
+                        <th style="width: 15%;">Author</th>
                         <th>Category</th>
                         <th>Total</th>
                         <th>Available</th>
@@ -165,17 +165,28 @@ if (isset($_GET['search'])) {
                                     onerror="this.onerror=null; this.src='../assets/images/default-cover.jpg';">
                             </td>
 
-                            <td class="fw-bold text-dark text-start"><?= htmlspecialchars($row['title']) ?></td>
-                            <td class="text-muted"><?= htmlspecialchars($row['author']) ?></td>
-                            <td><span class="badge shadow-sm" style="background-color: rgba(176, 138, 91, 0.15); color: #8C3A35;"><?= htmlspecialchars($row['category']) ?></span></td>
+                            <td class="fw-bold text-dark text-start text-truncate" style="max-width: 200px;" title="<?= htmlspecialchars($row['title']) ?>">
+                                <?= htmlspecialchars($row['title']) ?>
+                            </td>
+                            
+                            <td class="text-muted text-truncate" style="max-width: 150px;" title="<?= htmlspecialchars($row['author']) ?>">
+                                <?= htmlspecialchars($row['author']) ?>
+                            </td>
+
+                            <td class="text-nowrap">
+                                <span class="badge shadow-sm" style="background-color: rgba(176, 138, 91, 0.15); color: #8C3A35;">
+                                    <?= htmlspecialchars($row['category']) ?>
+                                </span>
+                            </td>
+                            
                             <td class="fw-semibold"><?= $row['total_qty'] ?></td>
                             
                             <td class="fw-bold" style="color: <?= ($row['available_qty'] > 0) ? '#82a841' : '#8C3A35' ?>;">
                                 <?= $row['available_qty'] ?>
                             </td>
 
-                            <td>
-                                <a href="edit_book.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-hover fw-bold shadow-sm text-white mb-1 mb-md-0" style="background-color: #82a841; border: none;">
+                            <td class="text-nowrap">
+                                <a href="edit_book.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-hover fw-bold shadow-sm text-white me-1" style="background-color: #82a841; border: none;">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </a>
 
@@ -204,7 +215,7 @@ function confirmDelete(bookId, bookTitle) {
         text: "You won't be able to revert this! All associated data might be lost.",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#aa2734', // Standard Danger Red
+        confirmButtonColor: '#aa2734',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
