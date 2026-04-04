@@ -271,7 +271,6 @@ $review_count = $avg_data['review_count'] ?? 0;
         transition: color 0.2s, transform 0.2s;
     }
 
-    /* 🟢 Changed modal star hover color to Vintage Ochre 🟢 */
     .star-rating label:hover,
     .star-rating label:hover~label,
     .star-rating input:checked~label {
@@ -288,7 +287,7 @@ $review_count = $avg_data['review_count'] ?? 0;
             title: 'Success!',
             text: '<?php echo $_SESSION['success']; ?>',
             icon: 'success',
-            confirmButtonColor: '#82a841' // 🟢 Theme Sage Green
+            confirmButtonColor: '#82a841' //  Theme Sage Green
         });
     </script>
     <?php unset($_SESSION['success']); ?>
@@ -300,7 +299,7 @@ $review_count = $avg_data['review_count'] ?? 0;
             title: 'Oops...',
             text: '<?php echo $_SESSION['error']; ?>',
             icon: 'error',
-            confirmButtonColor: '#8C3A35' // 🟢 Theme Red-Brown
+            confirmButtonColor: '#8C3A35' //  Theme Red-Brown
         });
     </script>
     <?php unset($_SESSION['error']); ?>
