@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_id'])) {
     $book_id = (int)$_POST['book_id'];
     $user_id = $_SESSION['user_id'];
 
-    // 🟢 NEW LOGIC: Check if the user already has an active borrow for THIS specific book
+    // Check if the user already has an active borrow for THIS specific book
     $check_active_sql = "SELECT id FROM transactions 
                          WHERE user_id = $user_id AND book_id = $book_id AND status = 'active'";
     $check_active_result = $conn->query($check_active_sql);
