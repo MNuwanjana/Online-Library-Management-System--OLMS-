@@ -24,7 +24,6 @@ $base_url = '/Online-Library-Management-System--OLMS-/';
     
     <style>
         body {
-            /* 🟢 Reverted to the original deep slate/black cinematic background 🟢 */
             background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('../assets/images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
