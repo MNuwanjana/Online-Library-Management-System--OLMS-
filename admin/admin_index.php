@@ -12,51 +12,44 @@
 }
 </style>
 
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
 
-    <div class="p-5 rounded shadow text-white" 
-         style="background: linear-gradient(135deg, #4e73df, #224abe);">
-
-        <h1 class="fw-bold">Admin Dashboard</h1>
-
-        <p class="mt-2">
+    <div class="p-5 mb-5 rounded-4 shadow-lg text-white text-center" 
+         style="background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('../assets/images/hero-bg.jpg'); background-size: cover; background-position: center;">
+        <h1 class="display-5 fw-bold mb-3">Admin Dashboard</h1>
+        <p class="lead mb-0 text-white-50">
             Manage your library system efficiently. Add, update, and monitor books easily.
         </p>
-
     </div>
 
-    <div class="row g-4 mt-4">
+    <div class="row g-4 mt-2">
 
-        <!-- Add Book -->
         <div class="col-md-4">
-            <div class="card card-hover shadow text-center p-4">
-                <h4>➕ Add Book</h4>
-                <p>Add new books to library</p>
-                <a href="add_books.php" class="btn btn-success">Go</a>
+            <div class="card card-hover shadow-sm border-0 text-center p-4 rounded-4 h-100">
+                <h4 class="fw-bold text-dark">➕ Add Book</h4>
+                <p class="text-muted mb-4">Add new books to library</p>
+                <a href="add_books.php" class="btn btn-success fw-bold w-100 mt-auto">Go to Add Book</a>
             </div>
         </div>
 
-        <!-- Manage Books -->
         <div class="col-md-4">
-            <div class="card card-hover shadow text-center p-4">
-                <h4>📚 Manage Books</h4>
-                <p>Edit or delete books</p>
-                <a href="manage_books.php" class="btn btn-primary">Go</a>
+            <div class="card card-hover shadow-sm border-0 text-center p-4 rounded-4 h-100">
+                <h4 class="fw-bold text-dark">📚 Manage Books</h4>
+                <p class="text-muted mb-4">Edit or delete books</p>
+                <a href="manage_books.php" class="btn btn-primary fw-bold w-100 mt-auto">Go to Manage</a>
             </div>
         </div>
 
-        <!-- Reports -->
         <div class="col-md-4">
-            <div class="card shadow text-center p-4">
-                <h4>📈 Reports</h4>
-                <p>View library activity</p>
-                <button class="btn btn-secondary">Coming Soon</button>
+            <div class="card shadow-sm border-0 text-center p-4 rounded-4 h-100 bg-light opacity-75">
+                <h4 class="fw-bold text-secondary">📈 Reports</h4>
+                <p class="text-muted mb-4">View library activity</p>
+                <button class="btn btn-secondary fw-bold w-100 mt-auto" disabled>Coming Soon</button>
             </div>
         </div>
 
     </div>
 
 </div>
-
 
 <?php include('../includes/footer.php'); ?>

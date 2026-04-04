@@ -28,13 +28,12 @@ $cat_result = $conn->query($cat_sql);
 ?>
 
 <div class="container my-4">
-    <!-- Hero / Welcome Section -->
-    <div class="bg-primary text-white rounded-4 p-5 mb-5 shadow">
-        <h1 class="display-4 fw-bold">Discover Your Next Read</h1>
-        <p class="lead">Browse our collection of thousands of books. Find, borrow, and enjoy!</p>
+    <div class="p-5 mb-5 rounded-4 shadow-lg text-white text-center" 
+         style="background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('../assets/images/hero-bg.jpg'); background-size: cover; background-position: center;">
+        <h1 class="display-4 fw-bold mb-3">Discover Your Next Read</h1>
+        <p class="lead mb-0 text-white-50">Browse our collection of thousands of books. Find, borrow, and enjoy!</p>
     </div>
 
-    <!-- Search & Filter Bar -->
     <div class="card shadow-sm mb-5 border-0">
         <div class="card-body p-4">
             <form method="GET" action="" class="row g-3">
@@ -57,29 +56,26 @@ $cat_result = $conn->query($cat_sql);
                     </select>
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary btn-lg w-100">
-                        <i class="bi bi-search"></i> Search
+                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">
+                        <i class="bi bi-search me-1"></i> Search
                     </button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Results Count -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-bold">📖 Books Collection</h3>
-        <span class="badge bg-secondary fs-6 p-2">
+        <h3 class="fw-bold text-dark">📖 Books Collection</h3>
+        <span class="badge bg-secondary fs-6 p-2 shadow-sm">
             <?php echo $result->num_rows; ?> book(s) found
         </span>
     </div>
 
-    <!-- Books Grid (Netflix-style cards) -->
     <?php if ($result->num_rows > 0): ?>
         <div class="row g-4">
             <?php while ($book = $result->fetch_assoc()): ?>
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 shadow-sm border-0 hover-card">
-                        <!-- Book Cover -->
                         <div class="book-cover-wrapper">
                             <?php
                             $cover = $book['cover_image'];
@@ -94,26 +90,26 @@ $cat_result = $conn->query($cat_sql);
                                  alt="<?php echo htmlspecialchars($book['title']); ?>"
                                  onerror="this.onerror=null; this.src='../assets/images/default-cover.jpg'">
                             <?php if ($book['available_qty'] > 0): ?>
-                                <span class="badge-available">Available</span>
+                                <span class="badge-available shadow-sm">Available</span>
                             <?php else: ?>
-                                <span class="badge-unavailable">Borrowed</span>
+                                <span class="badge-unavailable shadow-sm">Borrowed</span>
                             <?php endif; ?>
                         </div>
                         
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold"><?php echo htmlspecialchars($book['title']); ?></h5>
-                            <p class="card-text text-muted">
-                                <i class="bi bi-person"></i> <?php echo htmlspecialchars($book['author']); ?>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold mb-1"><?php echo htmlspecialchars($book['title']); ?></h5>
+                            <p class="card-text text-muted small mb-3">
+                                <i class="bi bi-person me-1"></i> <?php echo htmlspecialchars($book['author']); ?>
                             </p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-info"><?php echo htmlspecialchars($book['category']); ?></span>
-                                <small class="text-success">
+                            <div class="d-flex justify-content-between align-items-center mb-3 mt-auto">
+                                <span class="badge bg-info text-dark shadow-sm"><?php echo htmlspecialchars($book['category']); ?></span>
+                                <small class="text-success fw-bold">
                                     📗 <?php echo $book['available_qty']; ?>/<?php echo $book['total_qty']; ?> left
                                 </small>
                             </div>
                             <a href="book_details.php?id=<?php echo $book['id']; ?>" 
-                               class="btn btn-primary w-100 mt-2">
-                                View Details →
+                               class="btn btn-outline-primary w-100 fw-bold">
+                                View Details <i class="bi bi-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -121,14 +117,13 @@ $cat_result = $conn->query($cat_sql);
             <?php endwhile; ?>
         </div>
     <?php else: ?>
-        <div class="alert alert-warning text-center p-5">
-            <h4>😔 No books found</h4>
-            <p>Try a different search term or browse all categories.</p>
+        <div class="alert alert-warning text-center p-5 shadow-sm border-0 rounded-4">
+            <h4 class="fw-bold mb-3">😔 No books found</h4>
+            <p class="text-muted mb-0">Try a different search term or browse all categories.</p>
         </div>
     <?php endif; ?>
 </div>
 
-<!-- Add custom inline style for this page only -->
 <style>
 .hover-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -144,7 +139,7 @@ $cat_result = $conn->query($cat_sql);
 }
 .book-cover {
     width: 100%;
-    height: 280px;
+    height: 320px; /* Made slightly taller for better poster proportions */
     object-fit: cover;
     transition: transform 0.3s ease;
 }
@@ -153,22 +148,22 @@ $cat_result = $conn->query($cat_sql);
 }
 .badge-available {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
     background-color: #28a745;
     color: white;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
 }
 .badge-unavailable {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
     background-color: #dc3545;
     color: white;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;

@@ -18,6 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_id'])) {
     $book_id = (int)$_POST['book_id'];
     $user_id = $_SESSION['user_id'];
 
+    // 🟢 NEW LOGIC: Check if the user already has an active borrow for THIS specific book
+    $check_active_sql = "SELECT id FROM transactions 
+                         WHERE user_id = $user_id AND book_id = $book_id AND status = 'active'";
+    $check_active_result = $conn->query($check_active_sql);
+
+    if ($check_active_result->num_rows > 0) {
+        // Stop the process and alert the user
+        $_SESSION['error'] = "You already have an active copy of this book! Please return it before borrowing another.";
+        header("Location: ../catalog/book_details.php?id=$book_id");
+        exit();
+    }
+
     // Check if book exists and is available
     $book_sql = "SELECT * FROM books WHERE id = $book_id AND available_qty > 0";
     $book_result = $conn->query($book_sql);
