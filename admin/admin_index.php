@@ -8,13 +8,13 @@
 .card-hover {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    background-color: #FDFBF7 !important; /* 🟢 Vintage Cream 🟢 */
+    background-color: #FDFBF7 !important; /*  Vintage Cream  */
     border: 1px solid rgba(176, 138, 91, 0.3) !important; /* Subtle Ochre border */
 }
 
 .card-hover:hover {
     transform: translateY(-8px);
-    /* 🟢 Warmer, vintage shadow instead of stark black 🟢 */
+    /*  Warmer, vintage shadow instead of stark black  */
     box-shadow: 0 15px 30px rgba(28, 17, 10, 0.15) !important; 
 }
 </style>
