@@ -131,13 +131,12 @@ $cat_result = $conn->query($cat_sql);
 }
 .hover-card:hover {
     transform: translateY(-8px);
-    /* 🟢 Changed shadow to match the warm dark theme instead of stark black 🟢 */
     box-shadow: 0 1rem 2rem rgba(28, 17, 10, 0.2) !important;
 }
 .book-cover-wrapper {
     position: relative;
     overflow: hidden;
-    background: #E9D9B2; /* Changed fallback background to theme beige */
+    background: #E9D9B2; 
 }
 .book-cover {
     width: 100%;
@@ -152,7 +151,7 @@ $cat_result = $conn->query($cat_sql);
     position: absolute;
     top: 12px;
     right: 12px;
-    background-color: #82a841; /* 🟢 New Sage Green 🟢 */
+    background-color: #82a841; 
     color: white;
     padding: 6px 14px;
     border-radius: 20px;
@@ -163,7 +162,7 @@ $cat_result = $conn->query($cat_sql);
     position: absolute;
     top: 12px;
     right: 12px;
-    background-color: #8C3A35; /* 🟢 Vintage Red-Brown 🟢 */
+    background-color: #8C3A35;
     color: white;
     padding: 6px 14px;
     border-radius: 20px;
