@@ -87,7 +87,7 @@ if (isset($_GET['search'])) {
                     title: 'Success!', 
                     text: '<?= htmlspecialchars($_SESSION['success']) ?>', 
                     icon: 'success', 
-                    confirmButtonColor: '#82a841' // 🟢 Sage Green
+                    confirmButtonColor: '#82a841' //  Sage Green
                 });
             });
         </script>
