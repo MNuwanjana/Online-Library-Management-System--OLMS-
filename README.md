@@ -19,7 +19,7 @@ The Online Library Management System (OLMS) is a web-based application designed 
 ## 👥 Team & Modules
 This project is divided into 5 core modules, ensuring a balanced workload across the team:
 
-* **Member 1 (Mithesha Nuwanjana|@MNuwanjana):** Team Lead, Integration Architect & Core User Hub (Homepage, User Dashboard & Profile Settings)
+* **Member 1 (Mithesha Nuwanjana|@MNuwanjana):** Team Lead & Core User Hub (Homepage, User Dashboard & Profile Settings)
 * **Member 2 (Thiseni Nudara|@Thiseni-Nuda):** User Authentication Across all pages (Login, Signup, Logout & Session Management)
 * **Member 3 (Rakash Mohammedh|@rakashmrm):** Catalog & UI/UX Lead (Book Search, Discovery, Global CSS/Design System)
 * **Member 4 (Amaya Senadheera|@Amaya-Senadheera):** Admin Panel & Inventory Management (CRUD operation on Book Inventory)
